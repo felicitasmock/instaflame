@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InstaFlame</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="img/icons/instagram-48.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js">
+
+    </script>
+</head>
+
+<body onload="loadPosts(), init()">
+    <header class="header">
+
+        <h1>InstaFlame</h1>
+        <div><input class="search-input" type="text" id="search" placeholder="Suche nach..." onkeydown="searchPosts()"></div>
+        <div class="header-icons-wrapper hide-mobile">
+            <a href="#"><img class="header-icons" src="img/icons/home-7-64.png"></a>
+            <img class="header-icons round-icon" src="img/feli.jpg">
+        </div>
+
+    </header>
+
+    <div class="content" id="postContainer"></div>
+
+
+
+</body>
+
+</html>
