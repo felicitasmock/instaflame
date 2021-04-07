@@ -69,9 +69,11 @@ function loadPosts() {
                 ${post['description']}
             </div>
              <div class="comments-container" id="showComments${i}">
-             ${generateCommentsHTML(post['comments'])}
+             <div class="posted-comments">
+             ${combineHTML(post['commentPerson'], post['comments'])}
+            
         
-               
+              </div> 
             </div>
              
         </div>   
@@ -89,6 +91,9 @@ function loadPosts() {
                 <span class="bold">Unbekannt&nbsp;</span>
                 <span>${post['comments']}</span>
                 </div>
+
+                 ${generateCommentsNameHTML(post['commentPerson'])}
+             ${generateCommentsHTML(post['comments'])}
   */
 
 //add Name and Comment
@@ -97,7 +102,7 @@ function addComment(i) {
     let commentName = document.getElementById(`name${i}`);
     // places comment in comment section
     document.getElementById(`showComments${i}`).innerHTML += `
-        <div class="posted-comments">
+       
         <span class="bold">${commentName.value}&nbsp;</span>
         <span>${comment.value}</span>
         </div>
@@ -105,7 +110,7 @@ function addComment(i) {
 
      //let nameCom = `${commentName.value}:${comment.value}`; //would put name and comment in same object
     posts[i]['comments'].push(comment.value); // pushes comment in array
-    // posts[i]['comments'].push(nameCom); // would set array wir name and comment in comment object
+    posts[i]['commentPerson'].push(commentName.value); // would set array wir name and comment in comment object
     setArray('posts', posts); // sets array in local storage
     comment.value = ''; // empties fields
     commentName.value = ''; //empties field
@@ -113,21 +118,35 @@ function addComment(i) {
 
 }
 
-///// funktioniert noch nicht!!!
+///// fucnction to generate HTML of comments
 function generateCommentsHTML(comment) { // function to generate comment HTML
     let commentsHTML = '';
     for (let i = 0; i < comment.length; i++) {
         let c = comment[i];
         commentsHTML += `
         <div class="posted-comments">
-        <span class="bold">Unbekannt&nbsp;</span>
         <span>${c}</span>
         </div>
         `;
     }
     return commentsHTML;
 }
-
+// function to generate HTML of comment Person
+function generateCommentsNameHTML(commentName){
+    let commentsNameHTML = '';
+    for (let i = 0; i < commentName.length; i++) {
+        let cn = commentName[i];
+        commentsNameHTML += `
+        <span class="bold">${cn}&nbsp;</span>   
+        `;
+    }
+    return commentsNameHTML;
+}
+// function to combine name and comment
+function combineHTML(commentName, comment){
+    return generateCommentsNameHTML(commentName) + generateCommentsHTML(comment);
+}
+//// PROBLEM: bei mehreren kommentaren werden zuerst die namen aneinander gereiht (name name comment comment) und dann die kommentare anstatt: name comment, name comment etc.
 
 // check if comment field is filled
 function checkInputComment(i) {
