@@ -1,5 +1,5 @@
 let posts = getArray('posts'); // sets Array from locael storage
-if (posts == undefined) {  // if localStorage is empty use:
+if (posts == '') {  // if localStorage is empty use:
 posts = [{
     'author': 'Feley',
     'icon': 'img/feli.jpg',
@@ -89,7 +89,7 @@ function loadPosts() {
                 <span class="bold">Unbekannt&nbsp;</span>
                 <span>${post['comments']}</span>
                 </div>
-                */
+  */
 
 //add Name and Comment
 function addComment(i) {
@@ -113,20 +113,21 @@ function addComment(i) {
 
 }
 
-///// funktioniert nocht nicht!!!
+///// funktioniert noch nicht!!!
 function generateCommentsHTML(comment) { // function to generate comment HTML
-    let html = '';
-    for (let index = 0; index < comment.length; index++) {
-        const c = comment[index];
-        html.innerHTML += `
+    let commentsHTML = '';
+    for (let i = 0; i < comment.length; i++) {
+        let c = comment[i];
+        commentsHTML += `
         <div class="posted-comments">
         <span class="bold">Unbekannt&nbsp;</span>
         <span>${c}</span>
         </div>
         `;
     }
-    return html;
+    return commentsHTML;
 }
+
 
 // check if comment field is filled
 function checkInputComment(i) {
