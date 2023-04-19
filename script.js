@@ -1,4 +1,4 @@
-let posts = getArray('posts'); // sets Array from locael storage
+let posts = getArray('posts'); // sets Array from local storage
 if (posts == '') {  // if localStorage is empty use:
 posts = [{
     'author': 'Feley',
