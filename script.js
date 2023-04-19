@@ -146,7 +146,6 @@ function generateCommentsNameHTML(commentName){
 function combineHTML(commentName, comment){
     return generateCommentsNameHTML(commentName) + generateCommentsHTML(comment);
 }
-//// PROBLEM: bei mehreren kommentaren werden zuerst die namen aneinander gereiht (name name comment comment) und dann die kommentare anstatt: name comment, name comment etc.
 
 // check if comment field is filled
 function checkInputComment(i) {
